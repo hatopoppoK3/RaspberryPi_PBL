@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>RaspberryPi</title>
+</head>
+
+<body>
+    <header>
+        <h1>RaspberryPi</h1>
+    </header>
+    <article>
+        <div>
+            <table>
+                <caption>
+                    <strong>Actuator Date(location:{{location}},datetime:{{datetime}})</strong>
+                </caption>
+                <thead>
+                    <tr>
+                        <th>Temperature</th>
+                        <th>Humidity</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{temperature}}</td>
+                        <td>{{humidity}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <form action="/action/" method="POST">
+                <fieldset>
+                    <legend>air conditioner</legend>
+                    <p><label><input type="radio" name="action_type" value="cooler" checked>cooler</label><br><label><input
+                                type="radio" name="action_type" value="heater">heater</label><br><label><input
+                                type="radio" name="action_type" value="dryer">dryer</label></p>
+                    <p><label>Temperature:<input type="text" name="temperature" pattern="[+-]?[0-9]+[.]?[0-9]?"
+                                required></label><br><label>Humidity:<input type="text" name="humidity"
+                                pattern="[+-]?[0-9]+[.]?[0-9]?" required></label></p>
+                    <input type="submit" value="action">
+                    <input type="reset" value="reset">
+                </fieldset>
+            </form>
+        </div>
+        <div>
+            <fieldset>
+                <legend>output</legend>
+                <li><a href="/output/json">json</a></li>
+                <li><a href="/output/csv">csv</a></li>
+            </fieldset>
+        </div>
+    </article>
+</body>
+
+</html>

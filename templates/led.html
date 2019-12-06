@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>RaspberryPi:{{action_type}}</title>
+</head>
+
+<body>
+    <header>
+        <h1>RaspberryPi:{{action_type}}</h1>
+    </header>
+    <article>
+        <table>
+            <thead>
+                <strong>{{action_type}}:{{action_flag}}</strong>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>now temperature</th>
+                    <td>{{temperature}}</td>
+                </tr>
+                <tr>
+                    <th>request temperature</th>
+                    <td>{{request_temperature}}</td>
+                </tr>
+                <tr>
+                    <th>now humidity</th>
+                    <td>{{humidity}}</td>
+                </tr>
+                <tr>
+                    <th>request humidity</th>
+                    <td>{{request_humidity}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <h5><a href="/">HOME</a></h5>
+    </article>
+</body>
+
+</html>
