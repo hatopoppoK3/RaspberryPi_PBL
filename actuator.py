@@ -1,5 +1,5 @@
 from collections import OrderedDict
-from datatime import datetime
+from datetime import datetime
 import json
 
 import pandas
@@ -22,7 +22,6 @@ def get_actuator_dict():
     """
     GPIO.setwarnings(False)
     GPIO.setmode(GPIO.BCM)
-    GPIO.cleanup()
 
     instance = dht11.DHT11(pin=dht_number)
     result = instance.read()
@@ -32,6 +31,7 @@ def get_actuator_dict():
         output_csv(read_datetime, result.temperature, result.humidity)
     with open('./json/actuator.json', 'r', encoding='utf-8') as f:
         return json.loads(f, object_pairs_hook=OrderedDict)
+    GPIO.cleanup()
 
 
 def output_json(read_datetime, temperature, humidity):
