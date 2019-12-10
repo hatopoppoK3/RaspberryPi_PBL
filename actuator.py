@@ -29,9 +29,9 @@ def get_actuator_dict():
     if result.is_valid():
         output_json(read_datetime, result.temperature, result.humidity)
         output_csv(read_datetime, result.temperature, result.humidity)
-    with open('./json/actuator.json', 'r', encoding='utf-8') as f:
-        return json.loads(f, object_pairs_hook=OrderedDict)
     GPIO.cleanup()
+    with open('./json/actuator.json', 'r', encoding='utf-8') as f:
+        return json.load(f, object_pairs_hook=OrderedDict)
 
 
 def output_json(read_datetime, temperature, humidity):
