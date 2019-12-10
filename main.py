@@ -34,18 +34,18 @@ def conditioner_action():
     """
     request_temperature = float(request.form['temperature'])
     request_humidity = float(request.form['humidity'])
-    action_type = str(request.form['action_type'])
+    request_action = str(request.form['request_action'])
     actuator_dict = get_actuator_dict()
     temperature = actuator_dict['temperature']
     humidity = actuator_dict['humidity']
     action_flag = 'do'
-    if action_type == 'cooler':
+    if request_action == 'cooler':
         if request_temperature < temperature:
             turn_on_led(cooler_number)
         else:
             action_flag = 'undo'
             turn_off_led()
-    elif action_type == 'heater':
+    elif request_action == 'heater':
         if temperature < request_temperature:
             turn_on_led(heater_number)
         else:
@@ -57,12 +57,12 @@ def conditioner_action():
         else:
             action_flag = 'undo'
             turn_off_led()
-    return render_template('led.html', action_type=action_type,
-                           action_flag=action_flag,
+    return render_template('led.html', temperature=temperature,
+                           humidity=humidity,
+                           request_action=request_action,
                            request_temperature=request_temperature,
-                           temperature=temperature,
                            request_humidity=request_humidity,
-                           humidity=humidity)
+                           action_flag=action_flag)
 
 
 @app.route('/output/json/')
