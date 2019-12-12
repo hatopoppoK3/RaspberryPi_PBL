@@ -8,9 +8,9 @@ from led import turn_on_led, turn_off_led
 
 
 app = Flask(__name__)
-cooler_number = None
-heater_number = None
-dryer_number = None
+COOLER_NUMBER = 7
+HEATER_NUMBER = 25
+DRYER_NUMBER = 8
 
 
 @app.route('/')
@@ -41,19 +41,19 @@ def conditioner_action():
     action_flag = 'do'
     if request_action == 'cooler':
         if request_temperature < temperature:
-            turn_on_led(cooler_number)
+            turn_on_led(COOLER_NUMBER)
         else:
             action_flag = 'undo'
             turn_off_led()
     elif request_action == 'heater':
         if temperature < request_temperature:
-            turn_on_led(heater_number)
+            turn_on_led(HEATER_NUMBER)
         else:
             action_flag = 'undo'
             turn_off_led()
     else:
         if request_humidity < humidity:
-            turn_on_led(dryer_number)
+            turn_on_led(DRYER_NUMBER)
         else:
             action_flag = 'undo'
             turn_off_led()

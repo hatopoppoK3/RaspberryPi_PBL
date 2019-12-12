@@ -6,7 +6,7 @@ import pandas
 import RPi.GPIO as GPIO
 from DHT11_Python import dht11
 
-dht_number = 14
+DHT_NUMBER = 14
 
 
 def get_actuator_dict():
@@ -23,9 +23,9 @@ def get_actuator_dict():
     GPIO.setwarnings(False)
     GPIO.setmode(GPIO.BCM)
 
-    instance = dht11.DHT11(pin=dht_number)
+    instance = dht11.DHT11(pin=DHT_NUMBER)
     result = instance.read()
-    read_datetime = datetime.now().isoformat()
+    read_datetime = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     if result.is_valid():
         output_json(read_datetime, result.temperature, result.humidity)
         output_csv(read_datetime, result.temperature, result.humidity)
